@@ -28,6 +28,7 @@ namespace Impostor.Server.Net.Inner.Objects
 
             PlayerInfo.CurrentOutfit.PlayerName = name;
 
+            // TODO check playerinfo ownership
             using var writer = Game.StartRpc(NetId, RpcCalls.SetName);
             Rpc06SetName.Serialize(writer, PlayerInfo.NetId, name);
             await Game.FinishRpcAsync(writer);
