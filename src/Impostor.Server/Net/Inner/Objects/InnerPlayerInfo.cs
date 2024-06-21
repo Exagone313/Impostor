@@ -65,6 +65,12 @@ namespace Impostor.Server.Net.Inner.Objects
 
         public uint PlayerLevel { get; internal set; }
 
+        public override bool IsDirty
+        {
+            get => CurrentOutfit.IsDirty;
+            internal set => CurrentOutfit.IsDirty = value;
+        }
+
         public bool CanMurder(IGame game, IDateTimeProvider dateTimeProvider)
         {
             if (!IsImpostor)
