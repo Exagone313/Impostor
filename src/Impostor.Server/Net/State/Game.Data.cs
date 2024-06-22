@@ -403,6 +403,13 @@ namespace Impostor.Server.Net.State
                     {
                         playerInfo.Controller = control;
                         control.PlayerInfo = playerInfo;
+
+                        // Reset PlayerInfo
+                        playerInfo.RoleType = null;
+                        playerInfo.RoleWhenAlive = null;
+                        playerInfo.Tasks.Clear();
+                        playerInfo.IsDead = false;
+                        playerInfo.IsDirty = true;
                     }
 
                     if (player != null)
