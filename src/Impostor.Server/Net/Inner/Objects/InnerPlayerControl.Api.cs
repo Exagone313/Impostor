@@ -151,15 +151,16 @@ namespace Impostor.Server.Net.Inner.Objects
             {
                 invalidReason = "Tried to murder a player, but murderer was not alive.";
             }
-            else if (target.PlayerInfo == null)
+            else if (target.PlayerInfo == null && !Game.IsHostAuthoritive)
             {
+                // host only mods may trigger this
                 invalidReason = "Tried to murder a player, but the murderer didn't have a playerinfo";
             }
-            else if (target.PlayerInfo.IsImpostor)
+            else if (target.PlayerInfo != null && target.PlayerInfo.IsImpostor)
             {
                 invalidReason = "Tried to murder a player, but target is an impostor";
             }
-            else if (target.PlayerInfo.IsDead)
+            else if (target.PlayerInfo != null && target.PlayerInfo.IsDead)
             {
                 invalidReason = "Tried to murder a player, but target was not alive.";
             }
